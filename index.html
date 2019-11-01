@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script data-ad-client="ca-pub-9906255047888996" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><meta charset="UTF-8">
+        <title>Github Email Search</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+        <link href="http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+        <script data-ad-client="ca-pub-9906255047888996" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+        <style type="text/css">
+            html,body {height: 100%;}
+            body {padding: 0px; margin:0px; background:url(https://i.imgur.com/B3ZAlLk.jpg) ; background-position: center; background-size: cover; background-attachment: fixed; background-repeat: no-repeat;}
+
+            button {
+                background-color: DodgerBlue; /* Blue background */
+                border: none; /* Remove borders */
+                color: white; /* White text */
+                padding: 12px 16px; /* Some padding */
+                font-size: 16px; /* Set a font size */
+                cursor: pointer; /* Mouse pointer on hover */
+            }
+
+            input[type=text] {
+                background-color: White; /* White background */
+                border: none; /* Remove borders */
+                color: grey; /* White text */
+                padding: 12px 16px; /* Some padding */
+                font-size: 16px; /* Set a font size */
+                -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+                -moz-box-sizing: border-box;    /* Firefox, other Gecko */
+                box-sizing: border-box;         /* Opera/IE 8+ */
+            }
+            img {
+                 width: 30%; 
+            }
+
+        </style>
+    </head>
+
+<body>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<br/><br/><br/><br/>
+<center>
+<img src="https://i.imgur.com/XtJEPBJ.png" alt="Github">
+
+<br/><br/><br/><br/>
+<input id=username type="text" font size="30" placeholder="Github Username/Repository">
+
+<button class="fa fa-search" onclick="fetch(`https://api.github.com/users/${username.value.replace(/^.*com[/]([^/]*).*$/,'$1')}/events/public`).then(e=> e.json()).then(e => [...new Set([].concat.apply([],e.filter(x => x.type==='PushEvent').map(x => x.payload.commits.map(c => c.author.email)))).values()]).then(x => results.innerText = x)"> Search</button>
+
+<p>
+<h2><div id=results class="result-container" style="color:white"></div></h2>
+
+</center>
+</body>
+</html>
